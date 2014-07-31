@@ -119,7 +119,8 @@ int printbuf_memset(struct printbuf *pb, int offset, int charvalue, int len)
 /* CAW: compliant version of vasprintf */
 static int vasprintf(char **buf, const char *fmt, va_list ap)
 {
-#ifndef WIN32
+//#ifndef WIN32
+#if (!defined(WIN32) && !defined(WINRT))
 	static char _T_emptybuffer = '\0';
 #endif /* !defined(WIN32) */
 	int chars;
@@ -127,7 +128,8 @@ static int vasprintf(char **buf, const char *fmt, va_list ap)
 
 	if(!buf) { return -1; }
 
-#ifdef WIN32
+//#ifdef WIN32 or WINRT
+#if defined(WIN32) || defined(WINRT)
 	chars = _vscprintf(fmt, ap)+1;
 #else /* !defined(WIN32) */
 	/* CAW: RAWR! We have to hope to god here that vsnprintf doesn't overwrite

@@ -36,14 +36,21 @@
 # include <unistd.h>
 #endif /* HAVE_UNISTD_H */
 
-#ifdef WIN32
+//#ifdef WIN32
+#if defined(WIN32) && !defined(WINRT)
 # define WIN32_LEAN_AND_MEAN
 # include <windows.h>
 # include <io.h>
 #endif /* defined(WIN32) */
 
-#if !defined(HAVE_OPEN) && defined(WIN32)
+#if !defined(HAVE_OPEN) && (defined(WIN32) || defined(WINRT))
 # define open _open
+/** todo :***/
+#ifdef WINRT
+# define close _close
+# define read _read
+# define write _write
+#endif
 #endif
 
 #if !defined(HAVE_SNPRINTF) && defined(_MSC_VER)

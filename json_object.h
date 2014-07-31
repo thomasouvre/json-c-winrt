@@ -23,6 +23,10 @@
 
 #include "json_inttypes.h"
 
+//#ifdef WINRT
+//#include <windows.h>
+//#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -270,6 +274,7 @@ extern int json_object_object_length(struct json_object* obj);
 extern void json_object_object_add(struct json_object* obj, const char *key,
 				   struct json_object *val);
 
+#ifndef WINRT
 /** Get the json_object associate with a given object field
  *
  * *No* reference counts will be changed.  There is no need to manually adjust
@@ -289,6 +294,7 @@ extern void json_object_object_add(struct json_object* obj, const char *key,
  */
 THIS_FUNCTION_IS_DEPRECATED(extern struct json_object* json_object_object_get(struct json_object* obj,
 						  const char *key));
+#endif
 
 /** Get the json_object associated with a given object field.  
  *
@@ -351,6 +357,20 @@ extern void json_object_object_del(struct json_object* obj, const char *key);
 
 #else /* ANSI C or MSC */
 
+#if WINRT
+# define json_object_object_foreach(obj,key,val) \
+	char *key = NULL; \
+	struct json_object *val = NULL; \
+	struct lh_entry *entry ## key; \
+	struct lh_entry *entry_next ## key = NULL; \
+	for(entry ## key = json_object_get_object(obj)->head; \
+		(entry ## key ? ( \
+			key = (char*)entry ## key->k, \
+			val = (struct json_object*)entry ## key->v, \
+			entry_next ## key = entry ## key->next, \
+			entry ## key) : 0); \
+		entry ## key = entry_next ## key)
+#else
 # define json_object_object_foreach(obj,key,val) \
 	char *key;\
 	struct json_object *val; \
@@ -363,6 +383,7 @@ extern void json_object_object_del(struct json_object* obj, const char *key);
 			entry_next ## key = entry ## key->next, \
 			entry ## key) : 0); \
 		entry ## key = entry_next ## key)
+#endif
 
 #endif /* defined(__GNUC__) && !defined(__STRICT_ANSI__) && __STDC_VERSION__ >= 199901L */
 

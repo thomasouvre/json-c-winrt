@@ -176,7 +176,8 @@ static int get_dev_random_seed()
 
 /* get_cryptgenrandom_seed */
 
-#ifdef WIN32
+//#ifdef WIN32 || WINRT
+#if defined(WIN32) && !defined(WINRT)
 
 #define HAVE_CRYPTGENRANDOM 1
 

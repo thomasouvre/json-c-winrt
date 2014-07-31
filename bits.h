@@ -30,6 +30,10 @@
 /**
  * @deprecated
  */
+#ifndef WINRT
 #define is_error(ptr) (ptr == NULL)
+#else
+#define is_error(ptr) ((unsigned long)ptr > (unsigned long)-4000L)
+#endif
 
 #endif

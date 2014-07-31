@@ -17,6 +17,11 @@
 #include <stddef.h>
 #include <limits.h>
 
+#ifdef WINRT
+# define InterlockedCompareExchange _InterlockedCompareExchange
+#endif
+
+
 #ifdef HAVE_ENDIAN_H
 # include <endian.h>    /* attempt to define endianness */
 #endif

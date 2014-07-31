@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{896ecac8-085d-46a3-b9b2-1661f552f6b0}</ItemsProjectGuid>
+    <ItemsRootNamespace>json_c_winrt</ItemsRootNamespace>
+    <ItemsProjectName>json-c-winrt.Shared</ItemsProjectName>
+    <CodeSharingProject>248F659F-DAC5-46E8-AC09-60EC9FC95053</CodeSharingProject>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\arraylist.c">
+      <CompileAsWinRT>
+      </CompileAsWinRT>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\debug.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\json_c_version.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\json_object.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\json_object_iterator.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\json_tokener.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\json_util.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\libjson.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\linkhash.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\printbuf.c" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\random_seed.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\arraylist.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\bits.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\config.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\debug.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_config.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_c_version.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_inttypes.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_object_iterator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_object_private.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_tokener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\json_util.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\linkhash.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\math_compat.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\printbuf.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\random_seed.h" />
+  </ItemGroup>
+</Project>

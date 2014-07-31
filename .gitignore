@@ -53,3 +53,8 @@
 *.o
 /libjson-c.la
 /libjson.la
+/vcbuild/json-c-winrt/json-c-winrt.Windows/ARM/Debug
+/vcbuild/json-c-winrt/json-c-winrt.Windows/Debug
+/vcbuild/json-c-winrt/json-c-winrt.Windows/x64/Debug
+/vcbuild/json-c-winrt/json-c-winrt.WindowsPhone/ARM/Debug
+/vcbuild/json-c-winrt/json-c-winrt.WindowsPhone/Debug
